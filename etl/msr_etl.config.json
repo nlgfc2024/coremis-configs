@@ -1,0 +1,22 @@
+{
+  "auth_type": "basic",
+  "auth_basic_username": "<add_msr_user_username_here>",
+  "auth_basic_password": "<add_msr_user_password_here>",
+  "auth_bearer_token": "",
+  "source_url": "https://malawiubr.org/api/v2",
+  "source_headers": {
+    "Accept": "application/json"
+  },
+  "source_batch_size": 50,
+  "source_timeout_seconds": 120,
+  "source_retry_total": 1,
+  "source_retry_backoff_factor": 0.2,
+  "source_verify_ssl": true,
+  "source_ca_bundle_path": "",
+  "ubr_programme_parameter_id": 2,
+  "sink_model_lookup_field": "json_ext__ubr_id",
+  "sink_update_existing": true,
+  "sink_import_username": "Admin",
+  "gql_query_msr_etl_rule_perms": ["953001"],
+  "gql_mutation_execute_msr_etl_rule_perms": ["953002"]
+}
