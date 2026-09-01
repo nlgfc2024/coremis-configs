@@ -87,6 +87,7 @@
     { "key": "ta",          "label": "Traditional Authority","source": "reporter.jsonExt.traditional_authority_name" },
     { "key": "district",    "label": "District",     "source": "ticket.jsonExt.district_name" },
     { "key": "catchment",   "label": "Micro-catchment", "source": "ticket.jsonExt.micro_catchment" },
+    { "key": "hotspot",     "label": "Hotspot",      "source": "ticket.jsonExt.hotspot_name" },
     { "key": "projectName", "label": "Project Name", "source": "ticket.jsonExt.project_name" },
     { "key": "daysWorked",  "label": "Days Worked",  "source": "ticket.jsonExt.days_worked" }
   ],
