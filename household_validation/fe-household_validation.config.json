@@ -1,0 +1,10 @@
+{
+  "validationListFilters": {
+    "filters": [],
+    "requiredFilters": ["district"],
+    "programs": [
+      { "match": "RMEP", "filters": ["district", "microCatchment"], "requiredFilters": ["district"] },
+      { "match": "UPG", "filters": ["district", "ta"], "requiredFilters": ["district"] }
+    ]
+  }
+}
