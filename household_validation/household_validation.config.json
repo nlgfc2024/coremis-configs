@@ -1,0 +1,223 @@
+{
+    "_comment": "Example household_validation ModuleConfiguration override for a Jobs Now (RMEP/UPG) deployment. Not loaded automatically -- copy the parts you need into the household_validation module's ModuleConfiguration.config (layer 'be') via Django admin. See README.md's 'Program-specific export columns' and 'Permissions' sections for the full field reference. Adjust the 'RMEP'/'UPG' keys to match this deployment's actual BenefitPlan.code values before saving -- see apps.py's comments on program_eligibility_rules/program_specific_export_columns.",
+    "program_eligibility_rules": {
+        "PWP": {
+            "member_flag": "fit_for_work",
+            "selection_strategy": {
+                "female_headed_percentage": 40,
+                "youth_headed_percentage": 40,
+                "reserve_percentage": 20,
+                "allocate_by_village": true
+            }
+        },
+        "RMEP": {
+            "requires_data_source": "PWP",
+            "priority_flag": "business_experience"
+        },
+        "UPG": {
+            "requires_data_source": "SCTP",
+            "member_flag": "fit_for_work",
+            "member_min_age": 18,
+            "member_max_age": 60
+        }
+    },
+    "program_specific_export_columns": {
+        "RMEP": [
+            {
+                "key": "has_business",
+                "column_name": "Does member has a business",
+                "target_individual_json_ext_key": "business_experience",
+                "type": "select",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false
+            },
+            {
+                "key": "business_type",
+                "column_name": "Type of Business",
+                "target_individual_json_ext_key": "type_of_business",
+                "type": "select",
+                "required": true,
+                "depends_on": {
+                    "key": "has_business",
+                    "equals": "Yes"
+                },
+                "options": []
+            },
+            {
+                "key": "business_duration",
+                "column_name": "Business Period (in years)",
+                "target_individual_json_ext_key": "business_period",
+                "type": "number",
+                "min": 0,
+                "max": 100,
+                "required": true,
+                "depends_on": {
+                    "key": "has_business",
+                    "equals": "Yes"
+                }
+            },
+            {
+                "key": "business_capital",
+                "column_name": "Business Capital",
+                "target_individual_json_ext_key": "business_capital",
+                "type": "number",
+                "min": 0,
+                "required": false,
+                "depends_on": {
+                    "key": "has_business",
+                    "equals": "Yes"
+                }
+            },
+            {
+                "key": "business_skills",
+                "column_name": "Business Skills",
+                "target_individual_json_ext_key": "business_skills",
+                "type": "select",
+                "required": false,
+                "depends_on": {
+                    "key": "has_business",
+                    "equals": "Yes"
+                },
+                "options": [
+                    "Formal training",
+                    "Apprenticeship",
+                    "Learned from family/community",
+                    "Self-taught",
+                    "Previous work/business experience"
+                ]
+            },
+            {
+                "key": "prior_knowledge",
+                "column_name": "Prior Knowledge",
+                "target_individual_json_ext_key": "prior_knowledge",
+                "type": "select",
+                "required": false,
+                "depends_on": {
+                    "key": "has_business",
+                    "equals": "Yes"
+                },
+                "options": [
+                    "Technical/Production",
+                    "Business management",
+                    "Financial literacy",
+                    "Marketing/sales"
+                ]
+            }
+        ],
+        "UPG": [
+            {
+                "key": "savings_experience",
+                "column_name": "Savings Experience",
+                "target_individual_json_ext_key": "savings_experience",
+                "type": "select",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false
+            },
+            {
+                "key": "willingness_to_participate",
+                "column_name": "Willingness to Participate",
+                "target_individual_json_ext_key": "willingness_to_participate",
+                "type": "select",
+                "options": [
+                    "Yes",
+                    "No"
+                ],
+                "required": false
+            },
+            {
+                "key": "sanitary_facilities",
+                "column_name": "Sanitary Facilities",
+                "target_individual_json_ext_key": "sanitary_facilities",
+                "type": "select",
+                "required": false,
+                "options": [
+                    "Toilet",
+                    "Mponda gear",
+                    "Kitchen",
+                    "Rubbish pit",
+                    "Bathroom"
+                ]
+            }
+        ]
+    },
+    "export_column_options_overrides": {
+        "business_type": [
+            "Rice production",
+            "rice aggregation/trading",
+            "rice milling",
+            "rice packaging/marketing",
+            "input supply",
+            "Cattle production/fattening",
+            "cattle aggregation/trading",
+            "meat retailing",
+            "livestock feed/input supply",
+            "livestock services",
+            "Beekeeping",
+            "honey harvesting",
+            "honey processing/packaging",
+            "honey aggregation/marketing",
+            "beekeeping equipment",
+            "Soybean production",
+            "aggregation/trading",
+            "soybean processing",
+            "livestock/feed production",
+            "Groundnut production",
+            "peanut butter processing",
+            "sorting/packaging",
+            "Fruit production/aggregation",
+            "fruit processing/drying",
+            "packaging/marketing",
+            "macadamia production/aggregation",
+            "processing",
+            "Sunflower production",
+            "oil pressing/processing",
+            "sunflower cake/feed production",
+            "Goat production",
+            "goat aggregation/trading",
+            "livestock feed",
+            "animal-health services",
+            "Broiler production",
+            "layer/egg production",
+            "poultry feed",
+            "chick/input supply",
+            "poultry trading",
+            "Vegetable production",
+            "aggregation",
+            "vegetable trading",
+            "processing/drying",
+            "Dairy production",
+            "milk collection/bulking",
+            "milk processing",
+            "yoghurt and other dairy products",
+            "milk retailing",
+            "fresh produce trading",
+            "processing/packaging",
+            "egg production",
+            "Tea production/smallholder supply",
+            "tea nurseries",
+            "green-leaf aggregation/transport",
+            "tea-related services",
+            "Pineapple and banana production",
+            "fruit aggregation",
+            "fruit trading",
+            "rice aggregation",
+            "packaging",
+            "rice trading",
+            "Fish production",
+            "fish trading",
+            "fish processing/drying",
+            "fish aggregation",
+            "fish feed/input supply",
+            "Cassava production",
+            "cassava flour processing",
+            "cassava snacks/chips",
+            "cassava trading"
+        ]
+    }
+}
