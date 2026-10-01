@@ -1,0 +1,96 @@
+{
+    "program_specific_enrolment_criteria": {
+        "RMEP": {
+            "sorting_strategy": [
+                {
+                    "key": "business_capital",
+                    "weight": {
+                        "< 1000": 0.5,
+                        "1000-5000": 1,
+                        "5001-10000": 2,
+                        "10001-20000": 3,
+                        "> 20000": 5
+                    }
+                },
+                {
+                    "key": "business_type",
+                    "weight": {
+                        "Retail": 1,
+                        "Service": 2,
+                        "Manufacturing": 3,
+                        "Agriculture": 4
+                    }
+                },
+                {
+                    "key": "business_period",
+                    "weight": {
+                        "< 1 year": 0.5,
+                        "1-3 years": 1,
+                        "4-6 years": 2,
+                        "7-10 years": 3,
+                        "> 10 years": 5
+                    }
+                },
+                {
+                    "key": "business_skills",
+                    "weight": {
+                        "Formal training": 3,
+                        "Apprenticeship": 2,
+                        "Learned from family/community": 1,
+                        "Self-taught": 1,
+                        "Previous work/business experience": 2
+                    }
+                },
+                {
+                    "key": "prior_knowledge",
+                    "weight": {
+                        "Technical/Production": 3,
+                        "Business management": 2,
+                        "Financial literacy": 2,
+                        "Marketing/sales": 1
+                    }
+                }
+            ],
+            "selection_criteria": {
+                "data_source": "PWP",
+                "validation_status": "VERIFIED",
+                "primary_worker": true,
+                "business_experience": true,
+                "selection_strategy": {
+                    "female": 60,
+                    "youth": 40
+                }
+            }
+        },
+        "UPG": {
+            "sorting_strategy": [
+                {
+                    "key": "savings_experience",
+                    "weight": {
+                        "No": 0,
+                        "Yes": 1
+                    }
+                },
+                {
+                    "key": "sanitary_facilities",
+                    "weight": {
+                        "Toilet": 1,
+                        "Mponda gear": 1,
+                        "Kitchen": 1,
+                        "Rubbish pit": 1,
+                        "Bathroom": 1
+                    }
+                }
+            ],
+            "selection_criteria": {
+                "data_source": "STCP",
+                "validation_status": "VERIFIED",
+                "willingness_to_participate": true,
+                "Age_limit": {
+                    "min_age": 18,
+                    "max_age": 60
+                }
+            }
+        }
+    }
+}
